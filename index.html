@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dados pessoais</title>
+  <script>
+
+    alert("Atenção, precisamos de alguns dados pessoais...");
+
+    function capitalizeWords(str) {
+      return str.toLowerCase().replace(/\b\w/g, function (char) {
+        return char.toUpperCase();
+      });
+    }
+
+    let logradouro = prompt("Digite o tipo de logradouro em que você reside \n\n Ex: R para Rua ou A para Avenida").toLowerCase();
+      if (logradouro == "r" || logradouro == "rua" || logradouro =="a" || logradouro == "avenida") {
+
+        let nomeLogradouro = capitalizeWords(prompt("Digite o nome da Rua ou Avenida"));
+        let numeroResidencia = Number(prompt("Digite o número da sua residência"));
+        let complemento = capitalizeWords(prompt("Digite o complemento\n\nCaso não há, pode deixar vazio!"));
+        let bairro = capitalizeWords(prompt("Digite o nome do bairro"));
+        let cidade = capitalizeWords(prompt("Digite o nome da cidade"));
+        let estado = capitalizeWords(prompt("Digite o nome do estado"));
+        let cep = Number(prompt("Digite seu CEP"));
+
+        if (cep.length === 8) {
+          cep = cep.slice(0, 5) + "-" + cep.slice(5);
+        }
+
+        logradouro = (logradouro === "r" || logradouro === "rua") ? "Rua " : "Avenida ";
+
+        if (complemento.trim() === "") {
+          alert(logradouro + nomeLogradouro + ", " + numeroResidencia + " - " + bairro + " - " + cidade + " - " +  estado + "\nCEP: " + cep);
+        } else {
+          alert(logradouro + nomeLogradouro + ", " + numeroResidencia + " - " + complemento + " - " + bairro + " - " + cidade + " - " +  estado + "\nCEP: " + cep);
+        }
+
+      } else {
+        alert("Desculpe, o logradouro só pode ser Rua ou Avenida.");
+      }
+
+  </script>
+</head>
+<body>
+  <h1>Coleta de dados completa!</h1>
+</body>
+</html>
